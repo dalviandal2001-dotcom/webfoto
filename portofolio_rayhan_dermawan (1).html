@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Rayhan Dermawan | Future Inspector Welder</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        welder: {
+                            glow: '#f59e0b',
+                            cyan: '#06b6d4',
+                            dark: '#0f172a',
+                            card: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #090d16;
+            color: #f8fafc;
+        }
+        /* Custom Spark Grid Background */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(245, 158, 11, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        /* Glassmorphism Effect */
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-panel-glow {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.15);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f59e0b;
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern min-h-screen flex flex-col selection:bg-amber-500 selection:text-slate-950">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-2.5 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-cyan-500 p-0.5 transition-transform group-hover:scale-105">
+                    <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                        <i data-lucide="flame" class="w-5 h-5 text-amber-500 group-hover:animate-pulse"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-amber-400 bg-clip-text text-transparent">RAYHAN D.</span>
+                    <span class="block text-[10px] uppercase tracking-wider text-slate-400 font-semibold">SMPN 25 BATAM</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-1 bg-slate-900/80 p-1.5 rounded-full border border-slate-800">
+                <a href="#about" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition">Profil</a>
+                <a href="#dream-hobby" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition">Cita-Cita & Hobi</a>
+                <a href="#gallery" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition">Galeri Tugas</a>
+                <a href="#upload" class="px-4 py-1.5 rounded-full text-xs font-medium text-amber-400 hover:bg-amber-500/10 transition">Upload Karya</a>
+            </nav>
+
+            <!-- Status Badge & Mobile Toggle -->
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span>Siswa Aktif</span>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-950 px-4 py-4 space-y-2">
+            <a href="#about" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800">Profil</a>
+            <a href="#dream-hobby" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800">Cita-Cita & Hobi</a>
+            <a href="#gallery" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800">Galeri Tugas</a>
+            <a href="#upload" class="block px-3 py-2 rounded-lg text-sm font-medium text-amber-400 hover:bg-slate-800">Upload Karya</a>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="hero" class="relative pt-12 pb-20 md:pt-24 md:pb-32 overflow-hidden">
+        <!-- Glow Orbs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-500/15 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-72 h-72 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="md:col-span-7 text-center md:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-amber-500/30 text-amber-400 text-xs font-semibold tracking-wide">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        <span>PORTOFOLIO PERSONAL & KARYA EDITAN</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Halo, Saya <br class="hidden sm:inline"/>
+                        <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-cyan-400 bg-clip-text text-transparent">
+                            Rayhan Dermawan
+                        </span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                        Siswa <span class="text-white font-medium underline decoration-amber-500/50">SMPN 25 Batam</span> yang berfokus membangun kebiasaan positif, mengasah kreativitas dalam editan digital, dan bercita-cita menjadi seorang <span class="text-amber-400 font-semibold">Inspector Welder</span> profesional.
+                    </p>
+
+                    <!-- Motivation Card Hero -->
+                    <div class="p-4 rounded-2xl glass-panel border-l-4 border-amber-500 text-left space-y-1 my-4">
+                        <div class="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                            <i data-lucide="quote" class="w-3.5 h-3.5"></i>
+                            <span>Prinsip & Motivasi</span>
+                        </div>
+                        <p class="text-slate-200 italic text-sm font-medium">
+                            "Masa depanmu ditentukan oleh apa yang kamu tabung berupa kebiasaan, ilmu, dan keberanian hari ini."
+                        </p>
+                    </div>
+
+                    <!-- Call to Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                        <a href="#gallery" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold hover:from-amber-400 hover:to-amber-500 transition shadow-lg shadow-amber-500/25 flex items-center gap-2 text-sm">
+                            <i data-lucide="folder-kanban" class="w-4 h-4"></i>
+                            Lihat Hasil Karya
+                        </a>
+                        <a href="#upload" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold border border-slate-700 transition flex items-center gap-2 text-sm">
+                            <i data-lucide="upload-cloud" class="w-4 h-4 text-amber-400"></i>
+                            Upload Tugas Baru
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual Element / Avatar Card -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <!-- Glowing Backing -->
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-amber-500 to-cyan-500 opacity-30 blur-lg"></div>
+                        
+                        <div class="relative glass-panel rounded-3xl p-6 border border-slate-700/80 space-y-6">
+                            <!-- Avatar Holder -->
+                            <div class="relative w-32 h-32 mx-auto rounded-2xl bg-gradient-to-tr from-amber-500 to-cyan-500 p-1 shadow-2xl">
+                                <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center overflow-hidden">
+                                    <i data-lucide="user" class="w-16 h-16 text-slate-400"></i>
+                                </div>
+                                <span class="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-2 border-slate-900 rounded-full"></span>
+                            </div>
+
+                            <div class="text-center space-y-1">
+                                <h2 class="text-xl font-bold text-white">Rayhan Dermawan</h2>
+                                <p class="text-xs text-slate-400">NISN: 103169932</p>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 pt-2">
+                                <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-center">
+                                    <p class="text-[10px] text-slate-400 font-medium">SEKOLAH</p>
+                                    <p class="text-xs font-bold text-slate-200 mt-0.5">SMPN 25 Batam</p>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-center">
+                                    <p class="text-[10px] text-slate-400 font-medium">TARGET KARIR</p>
+                                    <p class="text-xs font-bold text-amber-400 mt-0.5">Inspector Welder</p>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
+                                <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-500"></i> Batam, Indonesia</span>
+                                <span class="flex items-center gap-1.5"><i data-lucide="trophy" class="w-3.5 h-3.5 text-cyan-400"></i> Futsal Player</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION: DATA DIRI (ABOUT ME) ================= -->
+    <section id="about" class="py-16 bg-slate-950/60 border-y border-slate-800/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-12">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Informasi Utama</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Data Diri & Identitas</h2>
+                <div class="w-12 h-1 bg-amber-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1: Nama & NISN -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-amber-500/40 transition duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="id-card" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs text-slate-400 font-semibold uppercase">Identitas Pelajar</span>
+                    <h3 class="text-lg font-bold text-white mt-1">Rayhan Dermawan</h3>
+                    <p class="text-xs text-amber-400 font-mono mt-1">NISN: 103169932</p>
+                </div>
+
+                <!-- Card 2: Asal Sekolah -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="school" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs text-slate-400 font-semibold uppercase">Institusi Pendidikan</span>
+                    <h3 class="text-lg font-bold text-white mt-1">SMPN 25 Batam</h3>
+                    <p class="text-xs text-slate-400 mt-1">Kota Batam, Riau Islands</p>
+                </div>
+
+                <!-- Card 3: Jenis Kelamin & Agama -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-amber-500/40 transition duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="user-check" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs text-slate-400 font-semibold uppercase">Biodata Ringkas</span>
+                    <h3 class="text-lg font-bold text-white mt-1">Laki-Laki</h3>
+                    <p class="text-xs text-slate-300 mt-1 flex items-center gap-1.5">
+                        <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-400"></i> Agama: Islam
+                    </p>
+                </div>
+
+                <!-- Card 4: Status / Passion -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/40 transition duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs text-slate-400 font-semibold uppercase">Fokus Pengabdian</span>
+                    <h3 class="text-lg font-bold text-white mt-1">Pelajar & Creator</h3>
+                    <p class="text-xs text-slate-400 mt-1">Disiplin, Berani, & Pembelajar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION: CITA-CITA & HOBI ================= -->
+    <section id="dream-hobby" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Cita-Cita Card (Welder Theme) -->
+                <div class="glass-panel-glow rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between group">
+                    <!-- Tech overlay background effect -->
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition"></div>
+                    
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold tracking-wider uppercase border border-amber-500/40">
+                                Cita - Cita Masa Depan
+                            </span>
+                            <i data-lucide="shield-check" class="w-7 h-7 text-amber-400"></i>
+                        </div>
+
+                        <h3 class="text-3xl font-extrabold text-white tracking-tight">Inspector Welder</h3>
+                        
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Cita-cita saya adalah menjadi seorang **Inspector Welder** (Inspektur Pengelasan Profesional). Seorang ahli yang bertanggung jawab memastikan kualitas sambungan las pada struktur baja, industri manufaktur, kapal, dan kilang minyak memenuhi standar keamanan internasional tertinggi.
+                        </p>
+
+                        <div class="space-y-2 pt-2">
+                            <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider">Langkah Kunci yang Ditanamkan:</h4>
+                            <ul class="text-xs text-slate-300 space-y-1.5">
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-400"></i> Memahami standar NDT (Non-Destructive Testing) & visual welding inspection.</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-400"></i> Melatih ketelitian tinggi, keselamatan kerja (K3), dan integritas teknik.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between relative z-10">
+                        <span class="text-xs text-slate-400">Target Karir: Sektor Industri & Engineering</span>
+                        <div class="w-8 h-8 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center">
+                            <i data-lucide="wrench" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobi Card (Futsal Theme) -->
+                <div class="glass-panel rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between border border-cyan-500/30 group">
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition"></div>
+
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold tracking-wider uppercase border border-cyan-500/40">
+                                Hobi & Olahraga
+                            </span>
+                            <i data-lucide="trophy" class="w-7 h-7 text-cyan-400"></i>
+                        </div>
+
+                        <h3 class="text-3xl font-extrabold text-white tracking-tight">Futsal</h3>
+                        
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Futsal adalah hobi utama saya. Olahraga ini mengajarkan pentingnya **kerja sama tim**, kecepatan berpikir strategis di bawah tekanan, fisik yang tangguh, serta kebiasaan pantang menyerah hingga peluit akhir berbunyi.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+                                <span class="text-cyan-400 font-bold text-sm block">Kerja Sama</span>
+                                <span class="text-[11px] text-slate-400">Membangun komunikasi di lapangan</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+                                <span class="text-amber-400 font-bold text-sm block">Kedisiplinan</span>
+                                <span class="text-[11px] text-slate-400">Latihan rutin menjaga kebugaran</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between relative z-10">
+                        <span class="text-xs text-slate-400">Aktivitas Rutin Luar Sekolah</span>
+                        <div class="w-8 h-8 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                            <i data-lucide="activity" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION: GALERI TUGAS & KARYA EDITAN ================= -->
+    <section id="gallery" class="py-20 bg-slate-950/80 border-t border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Showcase Digital</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Hasil Tugas & Karya Editan</h2>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2" id="filter-buttons">
+                    <button onclick="filterGallery('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold bg-amber-500 text-slate-950 transition">Semua</button>
+                    <button onclick="filterGallery('video')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition">Video</button>
+                    <button onclick="filterGallery('foto')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition">Foto / Desain</button>
+                    <button onclick="filterGallery('tugas')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition">Tugas Sekolah</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid Container -->
+            <div id="gallery-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Sample Card 1: Video Cinematic -->
+                <div class="gallery-item video glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-500/50 transition duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden aspect-video bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Video Editan Cinematic" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <button onclick="openModal('Video Cinematic SMPN 25', 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80', 'video', 'Video hasil kompilasi suasana kegiatan pembelajaran di SMPN 25 Batam.')" class="p-3 bg-amber-500 rounded-full text-slate-950 font-bold transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                                    <i data-lucide="play" class="w-6 h-6 fill-current"></i>
+                                </button>
+                            </div>
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur text-amber-400 text-[10px] font-bold uppercase tracking-wider border border-slate-800">Video</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-lg text-white group-hover:text-amber-400 transition">Video Cinematic Profil Sekolah</h3>
+                            <p class="text-xs text-slate-400 mt-2 line-clamp-2">Project editan video pendek bertema kegiatan sekolah dengan efek transisi smooth dan color grading hangat.</p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-0 flex items-center justify-between text-xs text-slate-500">
+                        <span><i data-lucide="clock" class="w-3.5 h-3.5 inline mr-1"></i> 2026</span>
+                        <span class="text-amber-400 font-medium">Premiere Pro / CapCut</span>
+                    </div>
+                </div>
+
+                <!-- Sample Card 2: Poster Welder (Foto/Desain) -->
+                <div class="gallery-item foto glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-500/50 transition duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden aspect-video bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=800&q=80" alt="Poster Desain Industrial Welder" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <button onclick="openModal('Desain Poster Cita-Cita Welder', 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=80', 'image', 'Karya desain grafis konsep visual profesi Inspector Welder masa depan.')" class="p-3 bg-cyan-400 rounded-full text-slate-950 font-bold transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                                    <i data-lucide="eye" class="w-6 h-6"></i>
+                                </button>
+                            </div>
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur text-cyan-400 text-[10px] font-bold uppercase tracking-wider border border-slate-800">Foto / Desain</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-lg text-white group-hover:text-cyan-400 transition">Poster Visual Inspector Welder</h3>
+                            <p class="text-xs text-slate-400 mt-2 line-clamp-2">Editan manipulasi foto bertema teknik industri & percikan las berkonsep poster motivasi masa depan.</p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-0 flex items-center justify-between text-xs text-slate-500">
+                        <span><i data-lucide="clock" class="w-3.5 h-3.5 inline mr-1"></i> 2026</span>
+                        <span class="text-cyan-400 font-medium">Photoshop / Canva</span>
+                    </div>
+                </div>
+
+                <!-- Sample Card 3: Tugas Sekolah -->
+                <div class="gallery-item tugas glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-emerald-500/50 transition duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden aspect-video bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" alt="Laporan Tugas Digital" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <button onclick="openModal('Presentation Slide Informatika', 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80', 'image', 'Desain slide presentasi interaktif untuk mata pelajaran Informatika.')" class="p-3 bg-emerald-400 rounded-full text-slate-950 font-bold transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                                    <i data-lucide="eye" class="w-6 h-6"></i>
+                                </button>
+                            </div>
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold uppercase tracking-wider border border-slate-800">Tugas Sekolah</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-lg text-white group-hover:text-emerald-400 transition">Slide Presentasi Digital Informatika</h3>
+                            <p class="text-xs text-slate-400 mt-2 line-clamp-2">Tugas membuat materi tayang presentasi terstruktur mengenai teknologi dasar & internet.</p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-0 flex items-center justify-between text-xs text-slate-500">
+                        <span><i data-lucide="clock" class="w-3.5 h-3.5 inline mr-1"></i> 2026</span>
+                        <span class="text-emerald-400 font-medium">SMPN 25 Batam</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION: UPLOAD TUGAS INTERAKTIF ================= -->
+    <section id="upload" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel-glow rounded-3xl p-6 sm:p-10 border border-slate-700">
+                <div class="text-center space-y-2 mb-8">
+                    <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                        Area Form Karya
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Unggah Hasil Tugas & Editan Baru</h2>
+                    <p class="text-xs sm:text-sm text-slate-400 max-w-lg mx-auto">
+                        Tambahkan file foto atau video hasil karya kamu secara langsung ke galeri portofolio ini.
+                    </p>
+                </div>
+
+                <form id="uploadForm" onsubmit="handleUpload(event)" class="space-y-6">
+                    <!-- Dropzone -->
+                    <div class="relative border-2 border-dashed border-slate-700 hover:border-amber-500/60 rounded-2xl p-6 text-center bg-slate-900/50 hover:bg-slate-900 transition cursor-pointer group" id="dropZone">
+                        <input type="file" id="fileInput" accept="image/*,video/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="handleFileSelect(event)" required>
+                        <div class="space-y-3 pointer-events-none">
+                            <div class="w-14 h-14 mx-auto rounded-full bg-slate-800 group-hover:bg-amber-500/10 text-amber-400 flex items-center justify-center transition">
+                                <i data-lucide="upload-cloud" class="w-7 h-7"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <p class="text-sm font-semibold text-slate-200" id="fileLabel">Klik atau tarik file video / foto ke sini</p>
+                                <p class="text-[11px] text-slate-500">Format yang didukung: JPG, PNG, MP4, WEBM (Maks. 50MB)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Detail Form -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Judul Karya / Tugas *</label>
+                            <input type="text" id="karyaTitle" placeholder="Misal: Highlights Futsal Match 2026" required class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Kategori Karya *</label>
+                            <select id="karyaCategory" required class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-slate-200 focus:outline-none focus:border-amber-500 transition">
+                                <option value="video">Video (Editan/Vlog)</option>
+                                <option value="foto">Foto / Desain Grafis</option>
+                                <option value="tugas">Tugas Sekolah</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Deskripsi Singkat Karya *</label>
+                        <textarea id="karyaDesc" rows="3" placeholder="Tuliskan penjelasan editan, aplikasi yang digunakan, atau detail tugas..." required class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-500 transition"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold hover:from-amber-400 hover:to-amber-500 transition shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2">
+                        <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                        Unggah & Tampilkan di Galeri
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MODAL PREVIEW KARYA ================= -->
+    <div id="previewModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="relative w-full max-w-3xl glass-panel rounded-3xl border border-slate-700 overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between p-4 border-b border-slate-800">
+                <h3 id="modalTitle" class="font-bold text-lg text-white">Detail Preview</h3>
+                <button onclick="closeModal()" class="p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div id="modalMediaContainer" class="w-full aspect-video rounded-xl bg-slate-900 overflow-hidden flex items-center justify-center border border-slate-800">
+                    <!-- Dynamic Media Content (Image or Video) -->
+                </div>
+                <p id="modalDesc" class="text-sm text-slate-300 leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="mt-auto border-t border-slate-800/80 bg-slate-950 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-bold text-sm">
+                    RD
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-white">Rayhan Dermawan</p>
+                    <p class="text-[11px] text-slate-400">Siswa SMPN 25 Batam | Future Inspector Welder</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-500 text-center sm:text-right">
+                &copy; 2026 Rayhan Dermawan. All rights reserved. Built with Passion & Kebiasaan Baik.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Filter Gallery Logic
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-amber-500', 'text-slate-950');
+                btn.classList.add('bg-slate-900', 'text-slate-300');
+            });
+
+            event.target.classList.remove('bg-slate-900', 'text-slate-300');
+            event.target.classList.add('bg-amber-500', 'text-slate-950');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // File Selection Feedback
+        let currentUploadedFile = null;
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            const label = document.getElementById('fileLabel');
+            if (file) {
+                currentUploadedFile = file;
+                label.innerText = `Terpilih: ${file.name} (${(file.size / (1024*1024)).toFixed(2)} MB)`;
+                label.classList.add('text-amber-400');
+            }
+        }
+
+        // Handle Client-Side Interactive Upload
+        function handleUpload(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById('karyaTitle').value;
+            const category = document.getElementById('karyaCategory').value;
+            const desc = document.getElementById('karyaDesc').value;
+            const fileInput = document.getElementById('fileInput');
+
+            if (!fileInput.files[0]) return;
+
+            const file = fileInput.files[0];
+            const fileURL = URL.createObjectURL(file);
+            const isVideo = file.type.startsWith('video');
+
+            // Category Labels & Colors
+            const categoryMeta = {
+                video: { label: 'Video', color: 'text-amber-400', border: 'hover:border-amber-500/50', btnBg: 'bg-amber-500' },
+                foto: { label: 'Foto / Desain', color: 'text-cyan-400', border: 'hover:border-cyan-500/50', btnBg: 'bg-cyan-400' },
+                tugas: { label: 'Tugas Sekolah', color: 'text-emerald-400', border: 'hover:border-emerald-500/50', btnBg: 'bg-emerald-400' }
+            };
+
+            const meta = categoryMeta[category] || categoryMeta.foto;
+
+            // Create new DOM Gallery Card
+            const card = document.createElement('div');
+            card.className = `gallery-item ${category} glass-panel rounded-2xl overflow-hidden border border-slate-800 ${meta.border} transition duration-300 group flex flex-col justify-between`;
+            
+            card.innerHTML = `
+                <div>
+                    <div class="relative overflow-hidden aspect-video bg-slate-900">
+                        ${isVideo ? `
+                            <video src="${fileURL}" class="w-full h-full object-cover"></video>
+                        ` : `
+                            <img src="${fileURL}" alt="${title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        `}
+                        <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <button onclick="openModal('${title}', '${fileURL}', '${isVideo ? 'video' : 'image'}', '${desc}')" class="p-3 ${meta.btnBg} rounded-full text-slate-950 font-bold transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                                <i data-lucide="${isVideo ? 'play' : 'eye'}" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur ${meta.color} text-[10px] font-bold uppercase tracking-wider border border-slate-800">${meta.label}</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-white group-hover:${meta.color} transition">${title}</h3>
+                        <p class="text-xs text-slate-400 mt-2 line-clamp-2">${desc}</p>
+                    </div>
+                </div>
+                <div class="px-5 pb-5 pt-0 flex items-center justify-between text-xs text-slate-500">
+                    <span><i data-lucide="clock" class="w-3.5 h-3.5 inline mr-1"></i> Baru diunggah</span>
+                    <span class="${meta.color} font-medium">Unggahan Kamu</span>
+                </div>
+            `;
+
+            // Prepend to Gallery Grid
+            const galleryGrid = document.getElementById('gallery-grid');
+            galleryGrid.insertBefore(card, galleryGrid.firstChild);
+
+            // Re-render Lucide icons for the new card
+            lucide.createIcons();
+
+            // Reset Form & Feedback
+            document.getElementById('uploadForm').reset();
+            document.getElementById('fileLabel').innerText = 'Klik atau tarik file video / foto ke sini';
+            document.getElementById('fileLabel').classList.remove('text-amber-400');
+
+            // Scroll to Gallery
+            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Modal Preview Handlers
+        function openModal(title, mediaSrc, type, desc) {
+            const modal = document.getElementById('previewModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDesc = document.getElementById('modalDesc');
+            const mediaContainer = document.getElementById('modalMediaContainer');
+
+            modalTitle.innerText = title;
+            modalDesc.innerText = desc;
+
+            if (type === 'video') {
+                mediaContainer.innerHTML = `<video src="${mediaSrc}" controls autoplay class="w-full h-full object-contain bg-black"></video>`;
+            } else {
+                mediaContainer.innerHTML = `<img src="${mediaSrc}" alt="${title}" class="w-full h-full object-contain">`;
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('previewModal');
+            const mediaContainer = document.getElementById('modalMediaContainer');
+            mediaContainer.innerHTML = '';
+            modal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
